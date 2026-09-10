@@ -4,7 +4,7 @@
         {
             "label": "build all",
             "type": "shell",
-            "command": "clear && python3 build_all.py",
+            "command": "source .venv/bin/activate && clear && python3 build_all.py",
             "group": {
                 "kind": "build",
                 "isDefault": true
