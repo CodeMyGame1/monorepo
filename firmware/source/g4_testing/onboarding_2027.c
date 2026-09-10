@@ -9,11 +9,14 @@
 #include "main.h"
 
 
-// Hmmm... something may go here
+// PA5
+#define LED_USER_PORT GPIOA
+#define LED_USER_PIN 5
 
 
 PHAL_GPIO_InitConfig_t gpio_config[] = {
-    // Hmmm... something may go here
+    // Green User LED
+    PHAL_GPIO_INIT_OUTPUT(LED_USER_PORT, LED_USER_PIN, GPIO_OUTPUT_LOW_SPEED),
 };
 
 void HardFault_Handler();
