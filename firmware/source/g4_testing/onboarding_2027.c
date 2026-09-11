@@ -23,11 +23,14 @@ PHAL_GPIO_InitConfig_t gpio_config[] = {
 void HardFault_Handler();
 
 void blinkGreenLED() {
-    PHAL_GPIO_toggle(LED_USER_PORT, LED_USER_PIN);
+    PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, true);
+    RTOS_delay_ms(200);
+    PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, false);
+    RTOS_delay_ms(800);
 }
 
 // Define blink task.
-RTOS_DEFINE_TASK(blinkGreenLED, 500, TASK_PRIORITY_NORMAL, STACK_256);
+RTOS_DEFINE_TASK(blinkGreenLED, 1000, TASK_PRIORITY_NORMAL, STACK_256);
 
 int main() {
     // NUCLEO-G474RE does not have an external oscillator so use the internal 16MHz HSI clock
