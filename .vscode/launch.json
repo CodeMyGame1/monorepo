@@ -236,7 +236,9 @@
             "liveWatch": {
                 "enabled": true,
                 "samplesPerSecond": 5
-            }
+            },
+
+            "gdbPath": "/usr/bin/gdb-multiarch"
         }
     ]
 }

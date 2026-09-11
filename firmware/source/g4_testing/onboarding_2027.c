@@ -31,9 +31,11 @@ int main() {
         HardFault_Handler();
     }
 
-    // Hmmm... something(s) may go here
+    PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, true);
 
-    return 0;
+    while (1) {
+        __NOP();
+    }
 }
 
 
