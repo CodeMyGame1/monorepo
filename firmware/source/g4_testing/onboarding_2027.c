@@ -24,8 +24,8 @@ PHAL_GPIO_InitConfig_t gpio_config[] = {
     PHAL_GPIO_INIT_OUTPUT(LED_USER_PORT, LED_USER_PIN, GPIO_OUTPUT_LOW_SPEED),
     
     // CAN: Using PA11 (RX) and PA12 (TX)
-    PHAL_PIN_DEFS_FDCAN1_RX_PA11,
-    PHAL_PIN_DEFS_FDCAN1_TX_PA12,
+    PHAL_PIN_DEFS_FDCAN2_RX_PB12,
+    PHAL_PIN_DEFS_FDCAN2_TX_PB13,
 };
 
 void HardFault_Handler();
@@ -56,7 +56,7 @@ int main() {
     }
 
     // Setup CAN + FDCAN1 peripheral.
-    PHAL_FDCAN_init(FDCAN1, CCAN_BAUD_RATE);
+    PHAL_FDCAN_init(FDCAN2, CCAN_BAUD_RATE);
     CAN_init();
     START_CAN_TASKS()
 

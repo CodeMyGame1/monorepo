@@ -2,7 +2,7 @@
     "node_name": "ONBOARDING",
     "busses": {
         "CCAN": {
-            "peripheral": "FDCAN1",
+            "peripheral": "FDCAN2",
             "tx": [
                 {
                     "message_name": "heartbeat_onboarding",
@@ -16,6 +16,7 @@
                         },
                         {
                             "signal_name": "pranesh_favorite_number",
+                            "description": "My favorite number",
                             "data_type": "uint16_t",
                             "length": 4
                         }
