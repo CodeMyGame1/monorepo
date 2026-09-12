@@ -12,7 +12,7 @@
                             "signal_name": "blink_count",
                             "description": "Amount of blinks",
                             "data_type": "uint16_t",
-                            "length": 4
+                            "length": 16
                         },
                         {
                             "signal_name": "pranesh_favorite_number",

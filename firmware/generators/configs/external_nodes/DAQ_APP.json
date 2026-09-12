@@ -41,7 +41,8 @@
                 {
                     "signal_name": "on_amount",
                     "description": "Amount of time turned on",
-                    "data_type": "uint16_t"
+                    "data_type": "uint16_t",
+                    "unit": "ms"
                 }
             ],
             "period_ms": 200,
