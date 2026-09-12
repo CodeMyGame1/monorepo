@@ -37,6 +37,10 @@ void blinkGreenLED() {
     RTOS_delay_ms(200);
     PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, false);
     RTOS_delay_ms(800);
+
+    // CAN comms.
+    counter++;
+    CAN_SEND_heartbeat_onboarding(counter, 7);
 }
 
 // Thread defines.
