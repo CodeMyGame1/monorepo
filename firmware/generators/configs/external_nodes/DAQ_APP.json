@@ -33,6 +33,19 @@
             ],
             "period_ms": 500,
             "priority": 3
+        },
+        {
+            "message_name": "response_onboarding",
+            "description": "DaqApp response message sent by onboarding code",
+            "signals": [
+                {
+                    "signal_name": "on_amount",
+                    "description": "Amount of time turned on",
+                    "data_type": "uint16_t"
+                }
+            ],
+            "period_ms": 200,
+            "priority": 3
         }
     ],
     "rx": [
@@ -41,6 +54,9 @@
         },
         {
             "message_name": "charging_telemetry"
+        },
+        {
+            "message_name": "heartbeat_onboarding"
         }
     ]
 }
