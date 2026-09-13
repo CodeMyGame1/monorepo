@@ -43,7 +43,8 @@ void blinkGreenLED() {
     }
 
     // Read message from DaqApp, check if it's stale.
-    if ((can_data.response_onboarding.last_rx - xTaskGetTickCount()) > 2500) {
+    // if ((can_data.response_onboarding.last_rx - xTaskGetTickCount()) > 2500) {
+    if (can_data.response_onboarding.is_stale()) {
         // On for 1 * 200 = 200ms, off for remaining 800ms
         freq = 1;
     } else {
