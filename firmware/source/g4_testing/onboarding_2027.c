@@ -30,21 +30,43 @@ PHAL_GPIO_InitConfig_t gpio_config[] = {
 
 void HardFault_Handler();
 
-uint16_t counter = 0;
+uint16_t blink_count = 0;
+
+// LED time on and time off in milliseconds,
+uint16_t timer = 0;
+uint16_t freq = 0;
 
 void blinkGreenLED() {
-    PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, true);
-    RTOS_delay_ms(200);
-    PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, false);
-    RTOS_delay_ms(800);
+    if (timer > 5) {
+        timer = 0;
+        blink_count++;
+    }
+
+    // Read message from DaqApp, check if it's stale.
+    if ((can_data.response_onboarding.last_rx - xTaskGetTickCount()) > 2500) {
+        // On for 1 * 200 = 200ms, off for remaining 800ms
+        freq = 1;
+    } else {
+        // Round DaqApp input to nearest 200ms.
+        freq = (uint16_t) (can_data.response_onboarding.on_amount / 200);
+    }
+
+    // Create blinking functionality.
+    if (timer < freq) {
+        PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, true);
+    } else {
+        PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, false);
+    }
 
     // CAN comms.
-    counter++;
-    CAN_SEND_heartbeat_onboarding(counter, 7);
+    CAN_SEND_heartbeat_onboarding(blink_count, 7);
+    
+    // Update timer.
+    timer++;
 }
 
 // Thread defines.
-RTOS_DEFINE_TASK(blinkGreenLED, 1000, TASK_PRIORITY_NORMAL, STACK_256);
+RTOS_DEFINE_TASK(blinkGreenLED, 200, TASK_PRIORITY_NORMAL, STACK_256);
 DEFINE_CAN_TASKS();
 
 int main() {

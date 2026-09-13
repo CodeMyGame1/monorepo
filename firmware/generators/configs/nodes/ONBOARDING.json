@@ -12,13 +12,13 @@
                             "signal_name": "blink_count",
                             "description": "Amount of blinks",
                             "data_type": "uint16_t",
-                            "length": 16
+                            "length": 32
                         },
                         {
-                            "signal_name": "pranesh_favorite_number",
+                            "signal_name": "favorite_number",
                             "description": "My favorite number",
                             "data_type": "uint16_t",
-                            "length": 4
+                            "length": 32
                         }
                     ],
                     "period_ms": 200,
