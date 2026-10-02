@@ -53,6 +53,7 @@ void blinkGreenLED() {
     }
 
     // Create blinking functionality.
+    // TODO: Bug where even at `on_amount` set to 1000ms, LED briefly flashes off.
     if (timer < freq) {
         PHAL_GPIO_write(LED_USER_PORT, LED_USER_PIN, true);
     } else {
